@@ -12,7 +12,7 @@
         <tr style="background: #cccccc;">
             <td>X <input type="int" name="x"/></td>         
         </tr>
-        <tr>
+        <tr style="background: #cccccc;">
             <td>Y <input type="int" name="y"/></td>
         </tr>
     </table>
@@ -28,8 +28,8 @@
     $y = $_POST['y'];
 
     echo "<h3>Pre-Swap Variable States:</h3>";
-    echo "<table>";
-    echo "<tr><td>X</td><td>Y</td></tr>";
+    echo '<table style="border: 0px;">';
+    echo '<tr style="background: #cccccc;"><td>X</td><td>Y</td></tr>';
     echo "<tr><td>" . $x . "</td>";
     echo "<td>" . $y . "</td></tr>";
     echo "</table>";
@@ -47,7 +47,7 @@
     echo "<h3>Post-Swap Variable States:<h3>";
     
     echo "<table>";
-    echo "<tr><td>X</td><td>Y</td></tr>";
+    echo '<tr style="background: #cccccc;"><td>X</td><td>Y</td></tr>';
     echo "<tr><td>" . $x . "</td>";
     echo "<td>" . $y . "</td></tr>";
     echo "</table>";

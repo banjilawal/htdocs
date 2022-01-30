@@ -1,0 +1,11 @@
+["A. testoni","Aetrex","Aldo","Alegria","Alexander mcqueen","Allen-edmonds","Anne klein","Annie","Armani","Beeko","Ben sherman","Bernardo","Betsey johnson","Big buddha",
+"Blowfish","Blundstone","Bogs","Born","Boss black","Bostonian","Bottega veneta","Brighton","Bruno magli","Call it spring","Calvin klein","Camper","Cesare paciotti","Chaco",
+""Clarks","Cobb hill","Cobian","Cole haan","Costume national","Crocs","Cushe","Dansko","Deer stags","DKNY","Dockers","Dolce & gabbana","Dolce vita","Dr. martens",
+"Dr. scholl's","Dsquared2","Dunham","Eastland","Ecco","Elephantito","Emerald by element","Emerica","Fendi","Fiel","Finn comfort","Fitflop","Fitzwell","Florsheim","Fly flot",
+"Footmates","Fossil","Franco sarto","Fratelli","Frye","Garvalin","Gbx","Gentle souls","Geox","Giorgio brutini","Giuseppe zanotti","Gordon rush","Gravati","Guess","Havaianas",
+"Hush puppies","Jambu","Johnston & murphy","Juicy couture","Kalso earth","Kamik","Kate spade new york","Keds","Keen","Kelsi dagger","Kenneth cole","Lacoste","Lassen","
+Ralph lauren","Lifestride","Livie & luca","Lloyd","Lounge by mark nason","Lucky brand","Lumiani","Madden girl","Magnanni","Marc jacobs","Matisse","Mephisto","Merrell",
+"Michael Kors","Minnetonka","Naturino","Nautilus","Old friend","Olukai","Original penguin","Patagonia","Pikolinos","Rockport","Romika","Roper","Ros hommerson","Roxy",
+"Salvatore ferragamo","Sam edelman","Santoni","Sanuk",""Seavees","Sebago","Sesto meucci","Seychelles","Skechers","Softwalk",Sorel","Spenco","Sperry top-sider","Splendid",
+"Spring step","Stacy adams","Steve madden","Stuart weitzman","Taryn rose","Ted baker","Teva","Timberland","Tommy bahama","Tommy Hilfiger","Trotters","Ugg","Vaneli",
+"Versace collection","Vince camuto","Vivienne westwood","Walking cradles","White mountain","Wolky","Wolverine","Woolrich","Yellow box"];

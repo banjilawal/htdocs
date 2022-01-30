@@ -1,51 +1,17 @@
 <!DOCTYPE html>
-<html lang="en-us">
-
+<html>
 <head>
-  <title>Sneakers and Heels</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sneakers and Heels</title>
 </head>
-
 <body>
-    <section id="headerSection" title="headerSection">
-        <header>
-        <img src="assets/shoe-collective-01.jpeg" alt="shoe-collective-01">
-        <h1>Welcome</h1>
+    <section>
+        <h1>Welcome!</h1>
 
         <p>
             Welcome to Sneakers and Heels. Where you can find your favorite styles in sneakers, heels, casual dress, shoes and boots.
         </p>
-        </header>
+
     </section>
-
-    <section id = "navSection" title="navSection">
-        <nav>
-
-        </nav>
-    </section>
-
-    <section>
-    </section>
-
-    <script>
-        let x = document.createElement("img");
-        x.src = "assets/shoe-collective-02.jpeg";
-        x.alt = "shoe-collective-02";
-        document.appendChild(x);
-
-        var imageCount = 3;
-        var imagePath = "shoe-collective-0";
-        
-        for (index = 1; index <= imageCount; index++) {
-            var path = imagePath + index + ".jpeg";
-            var picture = document.createElement("img");
-
-            window.alert(path);
-
-            //picture.src = "assets/shoe-collective-01.jpeg";
-            document.appendChild(picture).src("assets/shoe-collective-01.jpeg");
-        }
-    </script>
 
     <!--######## Start Helper Functions ########-->
     <script>
@@ -92,12 +58,6 @@
         var size = 10;
 
         var shoe = null;
-
-        const imageRoot = "assests";
-
-        function trimComma (string) {
-            return string = string.replace(/,\s*$/, "");
-        } // close trimComma
 
         function randomBrand () {
             var index = Math.floor(Math.random() * brands.length);
@@ -148,41 +108,10 @@
                 else {
                     return this.size;
                 }
-            } // close toString
+            } // close info
 
         } // end class ShoeSize
 
-/*
-        class ShoeSizeArray {
-            constructor() {
-                this.data = [];
-
-                for (index = 7; index < 14; index++) {
-                    s = new ShoeSize(index);
-                    document.write("pushing size: " + s.toString() + " onto size array<br>");
-                    data.push(s);
-
-                    if (Math.random() > 0.6) {
-                        data.push(new ShoeSize(index + 0.5));
-                    }
-                }       
-            } // close constructor
-            
-            subset () {
-                let a = [];
-
-                data.forEach(element => {
-                    if (Math.random() > 0.45) {
-                        a.push(element);
-                    }
-                });
-                return a;
-            }
-
-        } // end class ShoeSizeArray
-
-        var sizeAray = new ShoeSizeArray();
-*/
         function buildSizeList() {
             for (index = 7; index <= 13; index++) {
                 let size = new ShoeSize(index);
@@ -199,19 +128,17 @@
         buildSizeList();
 
         function sizeSubSet () {
-            let array = [];
+            var array = [];
 
             sizeList.forEach(element => {
                 if (Math.random() >= 0.45) {
-                    //document.write("size " + element.toString() + " in the subset<br>");
+                   // document.write("size " + element.toString() + " in the subset<br>");
                     array.push(element);
                 }
             });
 
-            return array;
-
         } // close sizeSubSet
-        var subset = sizeSubSet();
+        //var subset = sizeSubSet();
 
         function buttonBuilder (type, name, content) {
             var btn = document.createElement("button");
@@ -291,6 +218,9 @@
 
         } // close fillDiscountedBrands
         fillDiscountedBrands();
+
+
+
     </script>
     <!--######## Stop Helper Functions ########-->
 
@@ -384,40 +314,23 @@
         style = randomStyle();
         price = randomPrice();
         brand = randomBrand();
-        sizes = sizeSubSet();
-
-        text = "";
-        sizes.forEach(s => {
-            text += s.toString() + ", "
-        });
-        sizeString = trimComma(text.trim(", "));
-
-        window.alert(sizeString);
-
-
-        for (index = 0; index < sizes.length; index++) {
-            document.write(sizes[index].toString() + ", ");
-        }
-
-
-        window.alert(sizeString);
-        //document.write("<>Attempting to create the shoe with properties:<br>");
-        window.alert("Brand: " + brand + "\nstyle: " + style + "\nmodel: " + model + "\nprice: " + price);
+        document.write("<p>Attempting to create the shoe with properties:<br>");
+        document.write("Brand: " + brand + " style: " + style + " model: " + model + " price: " + price + "<br></p>");
 
         class Shoe {
-            constructor() { //style, brand, model, price) {
-                this.model = randomModel();
-                this.brand = randomBrand();
-                this.style = randomStyle();
-                this.regularPrice = randomPrice();
+            constructor(style, brand, model, price) {
+                this.style = style;
+                this.brand = brand;
+                this.style = style;
+                this.regularPrice = price;
 
-                this.sizes = sizeSubSet();
+               // this.sizes = sizeSubSet();
                 //this.model = randomModel();
                 //this.regularPrice = randomPrice();
 
-                this.discountPercent = randomPercentDiscount();
-                this.discountAmount = this.regularPrice * (this.discountPercent/100.00);
-                this.currentPrice = this.regularPrice - this.discountAmount;
+                //this.discountPercent = randomPercentDiscount();
+                //this.discountAmount = this.regularPrice * (this.discountPercent/100.00);
+                //this.currentPrice = this.regularPrice - this.discountAmount;
 
                 //this.inventory = Math.floor(Math.random() * MAX_PER_MODEL_INVENTORY);
                // this.image = null;
@@ -440,32 +353,24 @@
 
             } // close constructor 
 
-            sizeInfo () {
-                text = ""
-                this.sizes.forEach(size => {
-                    text += size.toString() + ", "
-                });
-
-                return trimComma(text);
-            }
-/*
             toString () {
-                return ("[brand: " + this.brand + " style: " + this.style + " model: " + this.model + " price: " + this.regularPrice + "]");
+                string =  "[brand: " + this.brand 
+                    + " style: " + this.style 
+                    + " model: " + this.model 
+                    + " price: " + this.regularPrice 
                    // + " precent discounts: " + this.discountPercent 
                    // + " number in stock: " + this.inventory
                   //  + " sizes: (" + this.sizes.toString() 
-                 //   +  ")]";
+                    +  ")]";
 
-                //return string;
+                return string;
 
             } // close toString
-*/
+
         } // end class Shoe
 
-        shoe = new Shoe(); //style, brand, model, price);
-        //document.write("<p>The current model of " + shoe.toString() + "</p>");
-        document.write("<p>The current model of " + shoe.style + " is " + shoe.model + " by " + shoe.brand + " retailing for " + shoe.regularPrice);
-        document.write("<br>price is discounted " + shoe.discountPercent + " % to " + shoe.currentPrice + " available in sizes: " + shoe.sizeInfo() + "</p>");
+        shoe = new Shoe(style, brand, model, price);
+        document.write("<p>The current shoe is: " + shoe.toString() + "</p>");
 
 
 
@@ -476,12 +381,6 @@
     <!--######## Start Shoe Size Handling Code ########-->
     <!--######## Finish Shoe Size Handling Code ########-->
 
-    <img src="assets/shoe-collective-03.jpeg" alt ="shoe-collective-03">
-
-    <footer>
-        <h5>Contact US</h5>
-        We love earing from you.
-    </footer>
 
 </body>
 </html> 
