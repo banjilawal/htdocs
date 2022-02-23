@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <title>Teser-02</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<!--######## Begin Body ########-->
+<body>
+    <script>
+      
+        var table = document.createElement("table");
+        table.id = "myTable";
+        table.title = "myTable";
+        table.border = "10";
+
+        for (var index = 1; index <= 5; index++) {
+            var row = table.insertRow();
+
+            for (var cellCount = 0; cellCount < 4; cellCount++) {
+                var cell = row.insertCell();
+                var text = "row-" + index + ", cell-" + cellCount;
+                cell.innerText = text;
+                imageCell = row.insertCell();
+
+                var image = document.createElement('img');
+                image.src = "/assignment-01/sneaker-0" + index + ".jpeg";
+                image.height = 500;
+                image.width = 400;
+
+                //imageCell.innerHTML = '<img height="500" width="400" src="/assignment-01/sneaker-05.jpeg">';
+                imageCell.appendChild(image);
+            }
+        }
+
+        var radiobox = document.createElement('input');
+    radiobox.type = 'radio';
+    radiobox.id = 'contact';
+    radiobox.value = 'email';
+    document.body.appendChild(radiobox);
+ 
+    var label = document.createElement('label')
+    label.htmlFor = 'contact';
+
+        document.body.appendChild(table);
+  
+    </script>
+    
+
+</body>
+</html> 

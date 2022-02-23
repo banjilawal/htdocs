@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--<script type="text/javascript" src="script.js"></script> --> 
+        
+        <title>Shoe Order Form</title>
+    </head>
+
+<!--######## Begin Body ########-->
+    <body>   
+        <!--######## Start Header Section ########-->
+        <header>
+            <h1>Shipping and Order Policies</h1>
+            <p>
+                <h2>Shipping Policies</h2>
+                <ul id="order-shipping-policies-list" name="order-shipping-policies-list">
+                    <li>Due to shipping constraints only 10 pairs of shoes can be ordered at a time.</li>
+                    <li>In Store pick-up is free.</li>
+                    <li>There is no charge for delivering orders of $50.00 or more.</li>
+                    <li>There is a $6.95 charge for delivering orders below $50.00</li>
+                </ul>
+            </p>
+
+            <P>
+                <h2>Discount Policies</h2>
+                <ul id="order-discount-policies-list" name="order-discount-policies-list">
+                    <li>Due to shipping constraints only 10 pairs of shoes can be ordered at a time.</li>
+                    <li>Orders of 5-10 shoes get a 25% discount off their total price.</li>
+                    <li>Orders of 2-4 paris get a 10% discount of their total price.</li>
+                    <li>Orders of 5-10 shoes get a 25% discount off their total price.</li>
+                </ul>
+            </P>
+        </header>
+        <!--######## End Header Section ########-->
+
+        <!--######## Start Nav Section ########-->
+        <nav>
+        </nav>
+        <!--######## End Nav Section ########-->
+
+        <!--######## Start Main Section ########-->
+        <main>
+            <h1>Shoe Order Form</h1>
+            <form class="input-form" id="shoe-order-form" name="shoe-order-form" method="post" action="shoe-order-form-processor.php"> 
+                <fieldset class="fieldset" id="shoe-detail-fields" name="shoe-detail-fields">
+                    <legend>Shoe Details</legend>
+    
+                    <p class="internal-fieldset-paragraph">
+                        <!-- 
+                            Since there is a restriction on the number of pairs in a single order I am using a selector instead of an numeric input field to make it 
+                            less confusing for the customer.  They will be able to see how many shoes can be in a single order without having to try and order outside
+                            the range and dealing with a message they have to read.
+                            
+                            The form which processes this form will have to treat the vale as a number instead of text.
+                        -->
+                        <label for="shoe-pair-quantity">Pairs to Order</label>
+                        <select id="shoe-pair-quantity-selector" name="shoe-pair-quantity-selector" title="Enter the number of shoes to order. There is a maximum of 10 per order" required>
+                            <option default="true" value="">Select how many pairs of shoes you would like to order</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="7">9</option>
+                            <option value="8">10</option>
+                        </select>
+                    </p>
+                </fieldset>
+
+                <fieldset class="fieldset" id="delivery-option-fields" name="delivery-option-fields">
+                    <legend>Delivery Options</legend>
+    
+                    <p class="internal-fieldset-paragraph">
+                        <label class="label" for="delivery-radio-button">I want them delivered</label>
+                        <input type="radio" id="delivery-radio-button" name="delivery-choice" title="I want my shoes delivered" checked="true" value="delivery">
+           
+                        <label class="label" for="pickup-radio-button">&nbsp I will pickup my shoes</label>
+                        <input type="radio" id="pickup-radio-button" name="delivery-choice" title="I will pickup my shoes when they arrive" value="pickup">
+                    </p>
+                </fieldset>              
+                <p>
+    
+                <fieldset class="fieldset" id="shoe-order-form-address-fields" name="shoe-order-form-address-fields">
+                    <legend>Mailing Address</legend>
+    
+                    <p class="internal-fieldset-paragraph">
+                        <label class="label" for="first-name">First Name</label>
+                        <input type="text" id="first-name" name="first-name" minlength="2" maxlength="50" size="50" pattern="[A-Za-z]{2,50}" title="Please use letters only" required>
+    
+                        <label class="label" for="last-name">&nbsp Last Name</label>
+                        <input type="text" id="last-name" name="last-name" minlength="2" maxlength="50" size="50" pattern="[A-Za-z]{2,50}" title="Please use letters only" required>
+                         
+                        <label class="label" for="middle-initial">&nbsp MI</label>
+                        <input type="text" id="middle-initial" name="middle-initial" minlength="1" maxlength="1" size="1" pattern="[A-Za-z]{1}" title="enter your middle initial or leave blank">
+                    </p>
+    
+                    <p class="internal-fieldset-paragraph">
+                        Street Address
+                        <label class="label" for="street-address"></label>
+                        <input type="text" id="street-address" name="street-address" size="100" title="Please enter your street address" required>
+    
+                        <label class="label" for="house-radio-button">&nbsp House</label>
+                        <input type="radio" id="house-radio-button" name="residence-type" title="Click here if you live in a house" value="house" checked="true">
+           
+                        <label class="label" for="apartment-radio-button">&nbsp Apartment</label>
+                        <input type="radio" id="apartment-radio-button" name="residence-type" title="Click here if you live in an apartment" value="apartment">
+                    </p>
+    
+                    <p class="internal-fieldset-paragraph">   
+                        <label class="label" for="city">City</label>
+                        <input type="text" id="city" name="city" minlength="2" maxlength="50" size="50" title="What is the city you live in" required>
+                        
+                        <label class="label" for="state">&nbsp State</label>
+                        <select name="state" id="state" required>
+                            <option default="true" value="">Please select your state or territory</option>
+                            <option value="AL">Alabama</option>
+                            <option value="AK">Alaska</option>
+                            <option value="AS">American Samoa</option>
+                            <option value="AZ">Arizona</option>
+                            <option value="AR">Arkansas</option>
+                            <option value="AA">Armed Forces Americas</option>
+                            <option value="AE">Armed Forces Europe</option>
+                            <option value="AP">Armed Forces Pacific</option>
+                            <option value="CA">California</option>
+                            <option value="CO">Colorado</option>
+                            <option value="CT">Connecticut</option>
+                            <option value="DE">Delaware</option>
+                            <option value="DC">District of Columbia</option>
+                            <option value="FM">Federated States of Micronesia</option>
+                            <option value="FL">Florida</option>
+                            <option value="GA">Georgia</option>
+                            <option value="GU">Guam</option>
+                            <option value="HI">Hawaii</option>
+                            <option value="ID">Idaho</option>
+                            <option value="IL">Illinois</option>
+                            <option value="IN">Indiana</option>
+                            <option value="IA">Iowa</option>
+                            <option value="KS">Kansas</option>
+                            <option value="KY">Kentucky</option>
+                            <option value="LA">Louisiana</option>
+                            <option value="ME">Maine</option>
+                            <option value="MH">Marshall Islands</option>
+                            <option value="MD">Maryland</option>
+                            <option value="MA">Massachusetts</option>
+                            <option value="MI">Michigan</option>
+                            <option value="MN">Minnesota</option>
+                            <option value="MS">Mississippi</option>
+                            <option value="MMO">Missouri</option>
+                            <option value="MT">Montana</option>
+                            <option value="NE">Nebraska</option>
+                            <option value="NV">Nevada</option>
+                            <option value="NH">New Hampshire</option>
+                            <option value=" NJ">New Jersey</option>
+                            <option value="NM">New Mexico</option>
+                            <option value="NY">New York</option>
+                            <option value="NC">North Carolina</option>
+                            <option value="ND">North Dakota</option>
+                            <option value="MP">Northern Mariana Islands</option>
+                            <option value="OH">Ohio</option>
+                            <option value="OK">Oklahoma</option>
+                            <option value="OR">Oregon</option>
+                            <option value="PW">Palau</option>
+                            <option value="PA">Pennsylvania</option>
+                            <option value="PR">Puerto Rico</option>
+                            <option value="RI">Rhode Island</option>
+                            <option value="SC">South Carolina</option>
+                            <option value="SD">South Dakota</option>
+                            <option value="TN">Tennessee</option>
+                            <option value="TX">Texas</option>
+                            <option value="UT">Utah</option>
+                            <option value="VT">Vermont</option>
+                            <option value="VI">Virgin Islands</option>
+                            <option value="VA">Virginia</option>
+                            <option value="WA">Washington</option>
+                            <option value="WV">West Virginia</option>
+                            <option value="WI">Wisconsin</option>
+                            <option value="WY">Wyoming</option>
+                        </select>
+    
+                        <label label="label" for="zipcode">&nbsp Zip Code</label>
+                        <input type="text" id="zip-code" name="zip-code" minlengh="5" maxlength="5"  size="5" pattern="[0-9]{1,5}" title="Please enter your zipcode" required>
+                    </p>
+                </fieldset>
+
+                <input id="shoe-order-sbumit" name="shoe-order-submit" type="submit"> 
+            </form>
+        </main>
+        <!--######## End Main Section ########--> 
+
+        <!--######## Start Footer Section ########-->   
+        <footer>
+        </footer>
+        <!--######## End Footer Section ########-->
+    </body>
+<!--######## Finish Body ########-->
+<html>

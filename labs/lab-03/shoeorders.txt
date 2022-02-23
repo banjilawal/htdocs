@@ -1,0 +1,7 @@
+friedrich Mabuse	5 shoes	 24.9875 discounted	0 shipping Charge	 pickup 	 74.9625 	 tax 	 82.45875recieved on Wednesday, 2022-02-09 07:38:23.2 pm
+friedrich Mabuse, 5 shoes,  24.9875 discounted,0 shippingFee, pickup, 74.9625 costPrice, 7.49625 tax, 82.45875 invoiceTotal,order recieved Wednesday, 2022-02-09 07:44:24.2 pm, estimated arrival Thursday, 2022-02-10 07:44:24.2 pm
+friedrich Mabuse, 5 shoes,  24.9875 discounted,0 shippingFee, pickup, 74.9625 costPrice, 7.49625 tax, 82.45875 invoiceTotal,order recieved 2022-02-09 07:45:20.2 pm, estimated arrival 2022-02-10 07:45:20.2 pm
+friedrich Mabuse, 5 shoes,  24.9875 discounted,0 shippingFee, pickup, 74.9625 costPrice, 7.49625 tax, 82.45875 invoiceTotal,order recieved 2022-02-10 09:32:38.2 pm, estimated arrival 2022-02-15 09:32:38.2 pm
+Engles Kropotkin, 3 shoes,  5.997 discounted,0 shippingFee, delivery, 53.973 costPrice, 5.3973 tax, 59.3703 invoiceTotal,order recieved 2022-02-10 09:33:15.2 pm, estimated arrival 2022-02-15 09:33:15.2 pm
+Afghar Nehru, 7 shoes,  34.9825 discounted,0 shippingFee, delivery, 104.9475 costPrice, 10.49475 tax, 115.44225 invoiceTotal,order recieved 2022-02-15 01:38:30.2 am, estimated arrival 2022-02-20 01:38:30.2 am
+Afghar Nehru, 7 shoes,  34.9825 discounted,0 shippingFee, delivery, 104.9475 costPrice, 10.49475 tax, 115.44225 invoiceTotal,order recieved 2022-02-15 01:47:44.2 am, estimated arrival 2022-02-20 01:47:44.2 am

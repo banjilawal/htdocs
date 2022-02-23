@@ -1,4 +1,4 @@
-"use strict";
+//"use strict";
 
 const MIN_SHOE_SIZE = 7;
 const MAX_SHOE_SIZE = 13;
@@ -52,6 +52,8 @@ var percentDiscount = 0;
 
 var size = 10;
 var shoe = null;
+
+var element = null;
 
 
 // --- Helper functions 
@@ -162,6 +164,21 @@ class ShoeSizeList {
     } // close toString
 
 } // end class ShoeSizeList
+
+function addSizeOptions () {
+    var select = document.body.getElementByID("shoe-style-selector");
+    sizeList = new ShoeSizeList();
+
+    sizeList.forEach(size => {
+        alert(size);
+        var option = document.createElement("option");
+        option.text = size;
+        option.value = size;
+        select.appendChild(option);
+    });
+
+} // close addSizeOptions 
+addSizeOptions();
 
 
 class Shoe {

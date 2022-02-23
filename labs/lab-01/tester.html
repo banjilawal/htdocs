@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <title>Test</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<!--######## Begin Body ########-->
+<body>
+    <script>
+      
+        var table = document.createElement("table");
+
+        for (var index = 1; index <= 5; index++) {
+            var row = table.insertRow();
+
+            for (var cellCount = 0; cellCount < 4; cellCount++) {
+                var cell = row.insertCell();
+                var text = 
+                cell.innerText = "row-" + index + ", cell-" + cellCount;
+            }
+            row.insertCell().innerHTML = sneaker.imageID;
+            row.insertCell.innerHTML = description;
+        }
+  
+    </script>
+    
+
+</body>
+</html> 
