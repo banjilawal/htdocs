@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <title>Sneakers and Heels</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<!--######## Begin Body ########-->
+<body>
+    <script>
+        // Variables and constants
+        const SHOE_CATALOG_SIZE = 10;
+
+        const MIN_SHOE_SIZE = 7;
+        const MAX_SHOE_SIZE = 13;
+        const DEFAULT_SHOE_SIZE = 10;
+
+        const LOWEST_PRICE = 19;
+        const HIGHEST_PRICE = 199;
+
+        const SALES_TAX_RATE = 0.05;
+        const MAX_BRANDS_ON_SALE = 5;
+        const MAX_PER_MODEL_INVENTORY = 150;
+
+        const BOOT_IMAGE_COUNT = 10;
+        const SNEAKER_IMAGE_COUNT = 10;
+        const DRESS_SHOE_IMAGE_COUNT = 8;
+        const HIGH_HEEL_IMAGE_COUNT = 10;
+        const CASUAL_SHOE_IMAGE_COUNT = 9;
+
+        const SALE_BRANDS_PERCENTAGE_DISCOUNT = 60;
+        const MAX_REGULAR_DISCOUNT_PERCENTAGE = 50;
+
+        var brand = "";
+        var style = "";
+        var model = "";
+        
+        var tax = 0.00;
+        var price = 50.00;
+        var percentDiscount = 0;
+
+        var customer = null;
+
+        var size = 10;
+        var shoe = null;
+
+        var brands = ["Testoni","Aetrex","Aldo","Alegria","Alexander Mcqueen","Allen-Edmonds","Anne Klein","Annie","Armani","Beeko","Ben Sherman","Bernardo",
+            "Betsey Johnson","Big Buddha","Blowfish","Blundstone","Bogs","Born","Boss black","Bostonian","Bottega veneta","Brighton","Bruno magli","Calvin klein","Camper",
+            "Cesare paciotti","Chaco","Clarks","Cobb hill","Cobian","Cole haan","Costume national","Crocs","Cushe","Dansko","Deer stags","DKNY","Dockers","Dolce & gabbana",
+            "Dolce vita","Dr. martens","Dr. scholl's","Dsquared2","Dunham","Eastland","Ecco","Elephantito","Emerald by element","Emerica","Fendi","Fiel","Finn comfort",
+            "Fitflop","Fitzwell","Florsheim","Fly flot","Footmates","Fossil","Franco sarto","Fratelli","Frye","Garvalin","Gbx","Gentle souls","Geox","Giorgio brutini",
+            "Giuseppe zanotti","Gordon rush","Gravati","Guess","Havaianas","Hush puppies","Jambu","Johnston & murphy","Juicy couture","Kalso earth","Kamik",
+            "Kate spade new york","Keds","Keen","Kelsi dagger","Kenneth cole","Lacoste","Lassen","Ralph lauren","Lifestride","Livie & luca","Lloyd","Lucky brand","Lumiani",
+            "Madden girl","Magnanni","Marc jacobs","Matisse","Mephisto","Merrell","Michael Kors","Minnetonka","Naturino","Nautilus","Old friend","Olukai","Original penguin",
+            "Patagonia","Pikolinos","Rockport","Romika","Roper","Ros hommerson","Roxy","Salvatore ferragamo","Sam edelman","Santoni","Sanuk","Seavees","Sebago","Sesto meucci",
+            "Seychelles","Skechers","Softwalk","Sorel","Spenco","Sperry top-sider","Splendid","Spring step","Stacy adams","Steve Madden","Stuart Weitzman","Taryn Rose",
+            "Ted baker","Teva","Timberland","Tommy bahama","Tommy Hilfiger","Trotters","Ugg","Vaneli","Versace collection","Vince camuto","Vivienne westwood","White Mountain",
+            "Wolky","Wolverine","Woolrich","Yellow box"];
+
+        var models = ["Bakhchiev","Pavlocich","Belisario","Elysees","Greinacher","Pays","Busching","Threnos","Tomasche","Oyle","Eschenbach","Pilss","Granat","Hands",
+            "Margueite","Fleisher","Didjeridu","Saraban","Espan","Guttler","Firkusny","Yorkshire","Nowell","Selles","Vroons","Schicksalslie","Teramo","Bernfeld","Naegele",
+            "Aeria","Busching","Noferi","Dizzi","Bars","Bester","Glauser","Bogaerts","Veils","Manzoni","Amorosa","Urbini","Nono","Cire","Wiklund","Soloist","Ponkin",
+            "Larviksp","Leuchten","Dino","Piccinini","Michala","Iwasaki","Hearted","Bihlmaier","Viaggio","Viljakainen","Meylan","Ives","Reverence","Freibert","Knut",
+            "Garvelmann","Evenhymn","Bresden","Honours","Lentz","Kober","Sephardim","Pasino","Chambon","Rheinla","Instrumentalis","Gorne","Nyffenegger","Paladins",
+            "Dushchenko","Anaosov","Rochberg","Iwaki","Conversione","Pellie","Reznikoff","Postilion","Lizst","Dubar","Foldes","Lluna","Cata","Bondi","Althann","Jaroslav",
+            "Ranzani","Presenting","Temps","Watching","Konzerstuck","Veyron","Biarent","Higginson","Mercre","Turetschek","Harty","Pomerian","Zagorinsky","Grammy","Wilm",
+            "Soren","Volpi","Germa","Misterio","Rotterdam","Tabakov","Siegf","Kabaiwanska","Resurrection","Palma","Grasso","Haselboeck","Duos","Asheknazy","Visions",
+            "Dreame","Omar","Krafft","Alta","Sommerfest","Symphonists","Sensations","Leande","Redel","Leman","Kerner","Entertainment","Cavasanti","Misha","Witwe",
+            "Nikolaeva","Reyna","Markus","Wildhaber","Waggoner","Adeste"];
+
+        var styles = ["Casual Shoes", "Dress Shoes", "Boots", "High Heels", "Sneakers"];
+
+        var sizeList = [];
+        var shoeList = [];
+        var discountedBrands = [];
+
+        // Helper functions
+
+        // Removes trailing commas
+        function trimComma (string) {
+            return string = string.replace(/,\s*$/, "");
+        } // close trimComma
+
+        function randomBrand () {
+            return brands[(Math.floor(Math.random() * brands.length))];
+        } // close randomBrand
+        //document.write("random brand:" + (randomBrand()) + "<p></p>");
+
+        function randomModel () {
+            return models[(Math.floor(Math.random() * models.length))];
+        } // close randomModel
+
+        function randomStyle () {
+            return styles[(Math.floor(Math.random() * styles.length))];                 
+        } // close randomStyle
+
+        function randomPrice () {
+               return (Math.floor(((Math.random() * (HIGHEST_PRICE - LOWEST_PRICE)) + LOWEST_PRICE)) + 0.99);
+        } // close randomPrice
+
+        function randomPercentDiscount () {
+            return Math.floor(Math.random() * MAX_REGULAR_DISCOUNT_PERCENTAGE);
+        } // close discountPercent
+
+        // This version of randomDiscount is used in the Shoe class.  It relies on the one with no parameters.
+        function randomDiscountPercent (brand) {
+            var discountPercent = 0;
+
+            if (discountedBrands.indexOf(brand) != -1) {
+                discountPercent = SALE_BRANDS_PERCENTAGE_DISCOUNT;
+            }
+            else {
+                if (Math.random() > 0.75) {
+                    discountPercent = randomPercentDiscount();
+                }
+            }
+            return discountPercent;
+        } // close randomDiscountPercent
+
+        function taxTotal (saleAmount) { 
+            return (saleAmount * SALES_TAX_RATE); 
+        } // close taxTotal
+
+        // Shoe sizes can come in whole numbers in increments of 0.5.  Shoe sizes might indicate if they
+        // are in wide or regular breadth.  So a shoe size is not simply a number but an object with 
+        // two properties
+        class ShoeSize {
+            constructor (size) {
+                this.size = size;
+                this.inWide = (Math.random() > 0.75); // inWide is a boolean 
+            } // close constructor
+
+            // Simply creates a string that of the ShoeSize object thats easier for people to 
+            // undertsand by including a "/W" if the shoe is available in Wide for that size.
+            info() {
+                if (this.inWide) { 
+                    return (this.size + "/" + this.size + "(W)"); 
+                }
+                else {
+                    return this.size;
+                }
+            } // close info
+        } // end class ShoeSize
+
+
+        // I  would have wanted to create a ShoeSize collection object none of them seemed to
+        // work.  The work ShoeSizes or ShoeSizeList would have done on creating an array of
+        // shoe sizes and getting a subset of ShoesizeList had to be split into two functions
+        // buildShoeSizeList() and sizeSubSet()
+        function buildSizeList() {
+            for (var index = MIN_SHOE_SIZE; index <= MAX_SHOE_SIZE; index++) {
+                var size = new ShoeSize(index);
+                sizeList.push(size);
+
+                // Randomly creates the rarer half sizes we sometimes find in shoes.
+                if (Math.random() > 0.6) {
+                    sizeList.push(new ShoeSize(index + 0.5));
+                }
+            }
+        } //close buildSizeList
+        buildSizeList();
+
+        // Gets a subset of the global shoe sizes The susbet's members are picked randomly.
+        function sizeSubSet () {
+            var array = [];
+
+            sizeList.forEach(element => {
+                if (Math.random() >= 0.45) {
+                    array.push(element);
+                }
+            });
+            return array;
+
+        } // close sizeSubSet
+        //var subset = sizeSubSet();
+
+        // Randomly picks items from the brands array to put into discountedBrands
+        function fillDiscountedBrands () {
+            for (index = 0; index < MAX_BRANDS_ON_SALE; index++) {
+                brand = randomBrand();
+
+                // If the randomly picked brand is already in the array pick again
+                while (discountedBrands.indexOf(brand) != -1) {
+                    brand = randomBrand(); 
+                }
+                discountedBrands.push(brand);
+            }
+        } // close fillDiscountedBrands
+        fillDiscountedBrands();
+
+        //document.write("<p></p>");
+        //discountedBrands.forEach(element => {
+        //    document.write("discounted brand: " + element + "<br>");
+        //});
+        //document.write("<p></p>");
+
+        // Javascript could not read the jpegs inthe assets directory so I had to first attach the to the html document
+        // with a bunch of img tags.  Then give each image an id and name so they can be found with getElementByID when
+        // I randomly pull an image of the right style for the shoe.
+        //
+        // Since the imageID is a string and it depends on the shoeStyle it did not seem like a good idea to make a class
+        // because the imageID is simply required in the Shoe class and nowhere else.  WAs tempted to move the code into 
+        // the Shoe class constructor since Ecmascript objects cannot call class methods but that might have been harder 
+        // follow whats going on in the constructor.  Having it here is not ideal since I have to remember to chain the Shoe
+        // class to this correctly and I end up going to two places for testing instead of one.
+        function randomImageID (shoeStyle) {
+            //document.write("<p></p>shoeStyle is " + shoeStyle + "<br>");
+            var number = 0;
+            var prefix = "";
+
+            switch(shoeStyle) {
+                case "Casual Shoes":
+                    prefix = "casual-" 
+                    number = Math.floor(Math.random() * (CASUAL_SHOE_IMAGE_COUNT - 1)) + 1;
+                    //document.write("prefix: " + prefix + "number:" + number + "<br>");
+                    break;
+                case "High Heels":
+                    prefix = "heel-"
+                    number = Math.floor(Math.random() * (HIGH_HEEL_IMAGE_COUNT - 1)) + 1;    
+                    //document.write("prefix: " + prefix + "number:" + number + "<br>");     
+                    break;
+                case "Sneakers":
+                    prefix = "sneaker-";
+                    number = Math.floor(Math.random() * (SNEAKER_IMAGE_COUNT - 1)) + 1;    
+                    //document.write("prefix: " + prefix + "number:" + number + "<br>");               
+                    break;
+                case "Boots":
+                    prefix = "boot-";
+                    number = Math.floor(Math.random() * (BOOT_IMAGE_COUNT - 1)) + 1;
+                    //document.write("prefix: " + prefix + "number:" + number + "<br>");       
+                    break;
+                case "Dress Shoes":
+                    prefix = "dress-";
+                    number = Math.floor(Math.random() * (DRESS_SHOE_IMAGE_COUNT - 1)) + 1;
+                    //document.write("prefix: " + prefix + "number:" + number + "<br>");                  
+                    break;
+                default:
+                    //document.write("the shoe style of (" + shoeStyle + ") was not found <br>");
+                    break; 
+                }
+
+                if (number < 10) {
+                    return (prefix + "0" + number)
+                } 
+                else {
+                    return (prefix + number);
+                }
+  
+       } // close randomImage
+       //document.write("</p><p>randomly chosen imageID = " + randomImageID((randomStyle())) + "</p>");
+
+       // Creates buttons dynamically
+        function buttonBuilder (type, name, content) {
+            var btn = document.createElement("button");
+            var label = name + "Button";
+            var enabled = false;
+
+            if (type == "submit" || type == "reset") {
+                enabled = false;
+            }
+
+            //document.write("Passed " + data + " to modelButtonHandler<br>") ;
+            btn.id = label;
+            btn.name = label;
+            btn.title = label;
+            btn.type = type;
+
+            btn.innerHTML = content;
+            btn.disabled = enabled;
+
+            document.body.appendChild(btn);  
+
+        } // close buttonBuilder
+
+        // Create Selectors for the global shoe size list, the brands, styles, and models of shoes.
+        function dropDownBuilder (name, outerText) {
+            var dropDown = document.createElement("select");
+            var label = name + "DropDown";
+
+            dropDown.id = label;
+            dropDown.title = label;
+            dropDown.name = label;
+            dropDown.outerText = outerText; 
+            document.body.appendChild(dropDown);
+
+            return dropDown.id;
+        } // close dropDownBuilder
+
+        function dropDownFiller (dropDownID, outerText) {
+            var dropDown = document.getElementById(dropDownID, ...list);
+            var counter = 0;
+
+            list.forEach(item => {
+                counter++;
+                document.write("run " + counter + " in dropdownBuilder: " + item + "<br>");
+                var option = document.createElement("option");
+
+                option.textContent = item;
+                option.value = item;
+
+                dropDown.appendChild(option);
+            });
+        } // close dropDownBuilder
+
+        function selectionDescriptor(description) {
+            var elem = document.createElement("option");
+
+            elem.textContent = description;
+            elem.value = description;
+
+            return elem;
+        } // close selectionDescriptor
+
+/*
+        function sizeListDropDown () {
+            var label = "sizeListDropDown";
+            var description = "Shoe Sizes";
+            var first = selectionDescriptor(description);
+            var dropDown = document.createElement("select");
+
+            dropDown.id = label;
+            dropDown.title = label;
+            dropDown.name = label;
+            dropDown.outerText = "Global Shoe Size List";
+
+            document.body.appendChild(dropDown);
+            dropDown.appendChild(first);
+
+            sizeList.forEach(size => {
+                var option = document.createElement("option");
+
+                text = size.info();
+                option.textContent = text;
+                option.value = text;
+                dropDown.appendChild(option);
+            });
+        } // cloaw sizeListDropDown
+        sizeListDropDown();
+
+        function discountedBrandsDropDown() {
+            var label = "discountedBrandsDropDown";
+            var description = SALE_BRANDS_PERCENTAGE_DISCOUNT + "% Off These Brands";
+            var first = selectionDescriptor(description);
+            var dropDown = document.createElement("select");
+
+            dropDown.id = label;
+            dropDown.title = label;
+            dropDown.name = label;
+            dropDown.outerText = "30% Off These Brands";
+
+            document.body.appendChild(dropDown);
+            dropDown.appendChild(first);
+
+            discountedBrands.forEach(brand => {
+                var option = document.createElement("option");
+
+                option.textContent = brand;
+                option.value = brand;
+                dropDown.appendChild(option);
+            });
+        } // close discountBrandsDropDown
+        discountedBrandsDropDown();
+*/
+        //----######## Start Javascript Classes Start Here ########----
+        class Shoe {
+            constructor() {
+                this.sizes = sizeSubSet();
+                this.model = randomModel();
+                this.brand = randomBrand();
+                this.style = "Sneakers";
+                this.regularPrice = randomPrice();
+                this.discountPercent = randomDiscountPercent(this.brand);
+                this.discountAmount = this.regularPrice * (this.discountPercent/100.00);
+                this.currentPrice = this.regularPrice - this.discountAmount;
+                this.inventory = Math.floor(Math.random() * MAX_PER_MODEL_INVENTORY);
+                this.imageID = randomImageID(this.style);
+            } // close constructor  
+
+            sizeInfo () {
+                var text = "";
+
+                this.sizes.forEach(size => {
+                    text += size.info() + ", "
+                });
+                return trimComma(text);
+            }
+
+            priceInfo () {
+                var text = "current price: " + this.currentPrice.toFixed(2);
+
+                if (this.discountPercent > 0) {
+                    text += " discounted from regular price of " + this.regularPrice.toFixed(2) + " by " + this.discountPercent + "%";
+                }
+                return text;
+            } // close priceInfo
+
+            discountInfo () {
+                if (this.discountPercent > 0) {
+                    return ("percent discounts: " + this.discountPercent); 
+                }
+                else {
+                    return "";
+                }
+            } // close discountInfo
+        } // end class Shoe
+
+    /*
+        shoe = new Shoe(); //style, brand, model, price);
+        // document.write("<p>The current model of " + shoe.info() + "</p>");
+        //document.write("<p>The current model of " + shoe.style + " is " + shoe.model + " by " + shoe.brand + " retailing for " + shoe.regularPrice);
+        document.write("<p>The current model of " + shoe.style + " is " + shoe.model + " by " + shoe.brand);
+        document.write(" " + shoe.priceInfo());
+        document.write(" available in sizes: " + shoe.sizeInfo());
+        //document.write("<br>price is discounted " + shoe.discountPercent + " % to " + shoe.currentPrice + " available in sizes: " + shoe.sizeInfo());
+        document.write(", imageID: " + shoe.imageID + ", There are currently " + shoe.inventory + " in stock " + shoe.priceInfo() + "</p>");
+        //document.write(", There are currently " + shoe.inventory + " in stock " + shoe.priceInfo() + "</p>");
+    */
+
+        class Shoes {
+            constructor() {
+                this.list = [];
+                var currentModels = [];
+                //var currentImageIDs = [];
+
+                for(var index = 0; index < SHOE_CATALOG_SIZE; index++) {
+                    var shoe = new Shoe();
+
+                    // Loop prevents duplicate model names 
+                    while (currentModels.indexOf(shoe.model) != -1) {
+                        //document.write(shoe.model + " already used as a model, picking another model name.<br>")
+                        shoe.model = randomModel();
+                    }
+
+                /*
+                    while (currentImageIDs.indexOf(shoe.imageID) != -1) {
+                        document.write("    the imageID " + shoe.imageID + " is already in use, selecting another one from the set of " + shoe.style + " images.<br>");
+                        shoe.imageID = randomImageID(shoe.style);
+                    }
+                */
+                    //document.write("the imageID " + shoe.imageID + " images.<br>");
+                    this.list.push(shoe);
+                    currentModels.push(shoe.model);
+                    //currentImageIDs.push(shoe.imageID);
+                }
+            }
+
+            details() {
+                var counter = 0;
+                this.list.forEach(shoe => {
+                    document.write(++counter + " style=" + shoe.style + ", brand=" + shoe.brand + ", model=" + shoe.model);
+                    //document.write(", imageID: " + shoe.imageID + " sizes: " + shoe.sizeInfo());
+                    document.write(", sizes=[" + shoe.sizeInfo() + "]");
+                    document.write(", imageID=" + shoe.imageID);
+                    document.write(", current price=" + shoe.currentPrice.toFixed(2)  + ", inventory=" + shoe.inventory + "<br>");
+                });
+            }
+
+            toTable () {
+                var baseID = "sneaker-";
+                var table = document.createElement("table");
+                table.id = "shoes-table";
+                table.name = table.id;
+                table.label = table.id;
+                table.class = "table";
+
+                for (var index = 1; index <= this.list.length; index++) {
+                    var sneaker = this.list[index];
+
+                    if (index < 10) {
+                        sneaker.imageID = baseID + "0" + index
+                    }
+                    else {
+                        sneaker.imageID = baseID + index;
+                    }
+
+                    var description = sneaker.brand + ", " + sneaker.model;
+
+                    var row = table.insertRow();
+                    row.insertCell().innerHTML = sneaker.imageID;
+                    row.insertCell.innerHTML = description;
+
+                    table.appendChild(row);
+                    
+                    
+
+                }
+
+            } // close toTable 
+
+        } // end class Shoes
+        shoeList = new Shoes();
+        shoeList.details();
+        shoeList.toTable();
+    </script>
+    
+
+    <section id="sneaker-images-section" name="sneaker-images">
+        <h4>sneaker Pictures</h4>
+        <table id="sneakers-table" name="sneakers-table">
+            <tr id="row-01" name="row-01">
+                <td>
+                    <img id="sneaker-01" name="sneaker-01" height="500" width="400" alt="sneaker-01.jpeg" src="assets/sneakers/sneaker-01.jpeg">
+                </td>
+            </tr>
+            <tr id="row-02" name="row-02">
+                <td>
+                    <img id="sneaker-02" name="sneaker-02" height="500" width="400" alt="sneaker-02.jpeg" src="assets/sneakers/sneaker-02.jpeg">
+                </td>
+            </tr>
+            <tr id="row-03" name="row-03">
+                <td>
+                    <img id="sneaker-03" name="sneaker-03" height="500" width="400" alt="sneaker-03.jpeg" src="assets/sneakers/sneaker-03.jpeg">
+                </td>
+            </tr>
+            <tr id="row-04" name="row-04">
+                <td>
+                    <img id="sneaker-04" name="sneaker-04" height="500" width="400" alt="sneaker-04.jpeg" src="assets/sneakers/sneaker-04.jpeg">
+                </td>
+            </tr>               
+            <tr id="row-05" name="row-05">
+                <td>
+                    <img id="sneaker-05" name="sneaker-05" height="500" width="400" alt="sneaker-05.jpeg" src="assets/sneakers/sneaker-05.jpeg">
+                </td>
+            </tr>
+            <tr id="row-06" name="row-06">
+                <td>
+                    <img id="sneaker-06" name="sneaker-06" height="500" width="400" alt="sneaker-06.jpeg" src="assets/sneakers/sneaker-06.jpeg">
+                </td>
+            </tr>
+            <tr id="row-07" name="row-07">
+                <td>
+                    <img id="sneaker-07" name="sneaker-07" height="500" width="400" alt="sneaker-07.jpeg" src="assets/sneakers/sneaker-07.jpeg">
+                </td>
+            </tr>   
+            <tr id="row-08" name="row-08">
+                <td>
+                    <img id="sneaker-08" name="sneaker-08" height="500" width="400" alt="sneaker-08.jpeg" src="assets/sneakers/sneaker-08.jpeg">
+                </td>
+            </tr>
+            <tr id="row-09" name="row-09">
+                <td>
+                    <img id="sneaker-09" name="sneaker-09" height="500" width="400" alt="sneaker-09.jpeg" src="assets/sneakers/sneaker-09.jpeg">
+                </td>
+            </tr>
+            <tr id="row-10" name="row-10">
+                <td>
+                    <img id="sneaker-10" name="sneaker-03" height="500" width="400" alt="sneaker-10.jpeg" src="assets/sneakers/sneaker-10.jpeg">
+                </td>
+            </tr>
+        </table>
+    </section>    
+
+</body>
+</html> 

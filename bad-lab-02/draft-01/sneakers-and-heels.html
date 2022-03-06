@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="text/javascript" src="script.js"></script>
+        
+        <title>Sneakers and Heels</title>
+    </head>
+
+<!--######## Begin Body ########-->
+    <body>   
+        <!--######## Start Header Section ########-->
+        <header>
+            <section id="header-section" name="header-section">
+
+            </section>
+        </header>
+        <!--######## End Header Section ########-->
+
+        <!--######## Start Nav Section ########-->
+        <nav>
+            <section id="nav-link-section" name="nav-link-section" title="Navigation Links">
+                <h2>The Navigation Section</h2>
+
+                <menu id="shoe-navigation-menu" name="shoe-navigation-menu" title="shoe navigation Menu">
+                    <h3 id="shoe-navigation-menu-header" name="shoe-navigation-menu-header">Shoe Naviation Menu</h3>
+
+                    <li id="goto-boots" name="goto-boots"><button>Boots</button></li>
+                    <li id="goto-casual-shoes" name="goto-casual-shoes"><button onclick="script.js">Casual</button></li>
+                    <li id="goto-dress-shoes" name="goto-dress-shoes"><button onclick="script.js">Dress Shoes</button></li>
+                    <li id="goto-heels" name="goto-heels"><button onclick="script.js">High Heels</button></li>
+                    <li id="goto-sneakers" name="goto-sneakers"><button onclick="script.js">Sneakers</button></li>
+                    <li id="view-orders" name="view-orders"><button onclick="script.js">Your Current Orders</button></li>
+                    <li id="return-item" name="return-item"><button onclick="script.js">Return an Item</button></li>
+                </menu>
+
+                <menu id="account-navigation-menu" name="account-navigation-menu" title="account navigation menu">
+                    <h3 id="account-navigation-menu-header" name="account-navigation-menu-header">Your Account Information Firstname</h3>
+                  
+                    <li id="view-current-orders" name="view-curren-orders"><button onclick="script.js">Your Current Orders</button></li>
+                    <li id="view-old-orders" name="view-old-orders"><button onclick="script.js">Your Previous Orders</button></li>
+                    <li id="return-item" name="return-item"><button onclick=""script.js>Return an Item</button></li>
+                    <li id="view-wish-list" name="view-wishlist"><button onclick="script.js">Your Current Orders</button></li>
+                    <li id="view-account-settings" name="view-account-settings" onclick="script.js"><button>View or Change Account Settings</button></li>
+                </menu>
+            </section>
+
+            <section id="shoe-search-section" name="shoe-search-section" title="shoe search section">
+                <h3 id="shoe-search-section-heading" name="shoe-seach-section-heading" title="shoe-search-section-heading">
+                    Search For Shoes
+                </h3>
+                
+                <section id="search-by-query-section" name="search-by-query-section" title="search the site">
+                    <h4 id="search-query-section-heading" name="search-query-section-heading">
+                        Search the site
+                    </h4>
+
+                    <label for="search-query-form">Search</label>
+                    <form id="search-query-form" name="search-query-form" action="script.js" method="get" title="search the site">
+
+                        <input type="search" id="query" name="query" title="search bar">
+                        <submit>
+                            Search
+                        </submit>
+                    </form>
+                </section>
+
+                <section id="search-by-dropdown-from-section" name="search-by-dropdown-form-search" title="menu search">
+                    <h4 id="search-by-dropdown-section-heading" name="search-by-dropdown-section-heading">
+                        Search By Shoe Style, Price, or Size
+                    </h4>
+                    <form id="drop-down-search-form" name="drop-down-search-form" title="Search Form" action="script.js" method="get">
+                        <label for="shoe-style-selector">Shoe Style</label>
+                        <select id="shoe-style-selector" name="shoe-style-selector" required>
+                            <option value=""></option>
+                        </select>
+    
+                        <label for="shoe-size-selector">Shoe Size</label>
+                        <select id="shoe-size-selector" name="shoe-size-selector">
+                            <option value=""></option>
+                        </select>
+    
+                        <label for="price-range-selector">Price Range</label>
+                        <select id="price-range-selector" name="price-range-selector">
+                            <option value=""></option>
+                        </select>
+    
+                        <input type="submit" id="search-submission-button" name="search-submission-button" value="submit">
+                    </form>
+                </section>
+            </section>
+        </nav>
+        <!--######## End Nav Section ########-->
+
+        <!--######## Start Main Section ########-->
+        <main>
+            <section id="shoe-table-section" name="shoe-table-section">
+                <h2>Our Shoes</h2>
+                <table class="table" id="shoes-table" name="shoes-table" title="shoes table">
+                    <thead class="" id="shoes-table-head" name="shoes-table-head">
+                        <tr>
+                            <th id="picture-column-header" name="picture-column-header">Picture</th>
+                            <th id="description-column-header" name="description-column-header">Description</th>
+                            <th id="price-column-header" name="price-column-header">Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="new-order-form-section" name="new-order-form-section">
+                <h2>New Order</h2>
+            </section> 
+
+            <section id=change-order-form name="change-order-form">
+                <h2>Change Your Order</h2>
+            </section>
+
+            <section id="shoe-section" name="shoe-section">
+                <h2>Shoe Name, Brand</h2>
+
+                <section id="shoe-picture-section" name="shoe-picture-section">
+                </section>
+
+                <section id="shoe-description-section" name="shoe-description-section">
+                </section>
+
+                <section id="add-to-order-section" name="add-to-order-section">
+                    <form id="add-to-order-form" name="add-to-order-form">
+                        <div id="shoe-size-selector-div" name="shoe-size-selector-div">
+                            <select id="shoe-size-selector">
+                                <option value="Available Sizes"></option>
+                            </select>
+                        </div>
+
+                        <div id="order-quantity-div" name="order-quantity-div">
+                            <input type="number" id="order-quantity-input" name="order-quantity-input">
+                        </div>
+                    </form>
+                </section>
+
+                <section id="shoe-price-section" name="shoe-price-section">
+                </section>
+            </section>
+
+            <section id="new-account-section" name="new-account-section">
+                <h2>New Account</h2>
+                    <form id=account-registration-form name="account-registration-form" title="New Account">
+                        <section id="personalia-input-section" name="personalia-input-section">
+                            <fieldset><legend>Personalia</legend>
+                                <label for="first-name">Firstname</label> 
+                                <input type="text" id="first-name" name="first-name">
+        
+                                 <label for="last-name">Lastname</label>
+                                 <input type="text" id="last-name" name="last-name">
+        
+                                <label for="birthdate">Birthdate</label>
+                                <input type="date" id="birthdate" name="birthdate">
+                            </fieldset>
+                        </section>            
+                            
+                        <section id="address-input-section" name="address-input-section">
+                            <fieldset><legend>Address Information</legend>
+        
+                                <label for="street-address">Adress</label>
+                                <input type="text" id="street-address" name="street-address">
+              
+                                <label for="city">City</label>
+                                <input type="text" id ="city" name="city">
+        
+                                <label for="state">State</label>
+                                <select name="state" id="state">
+                                    <option value="Alabama AL">Alabama</option>
+                                    <option value="Alaska AK">Alaska</option>
+                                    <option value="American Samoa AS">American Samoa</option>
+                                    <option value="Arizona AZ">Arizona</option>
+                                    <option value="Arkansas AR">Arkansas</option>
+                                    <option value="Armed Forces Americas AA">Armed Forces Americas</option>
+                                    <option value="Armed Forces Europe AE">Armed Forces Europe</option>
+                                    <option value="Armed Forces Pacific AP">Armed Forces Pacific</option>
+                                    <option value="California CA">California</option>
+                                    <option value="Colorado CO">Colorado</option>
+                                    <option value="Connecticut CT">Connecticut</option>
+                                    <option value="Delaware DE">Delaware</option>
+                                    <option value="District of Columbia DC">District of Columbia</option>
+                                    <option value="Federated States of Micronesia FM">Federated States of Micronesia</option>
+                                    <option value="Florida FL">Florida</option>
+                                    <option value="Georgia GA">Georgia</option>
+                                    <option value="Guam GU">Guam</option>
+                                    <option value="Hawaii HI">Hawaii</option>
+                                    <option value="Idaho ID">Idaho</option>
+                                    <option value="Illinois IL">Illinois</option>
+                                    <option value="Indiana IN">Indiana</option>
+                                    <option value="Iowa IA">Iowa</option>
+                                    <option value="Kansas KS">Kansas</option>
+                                    <option value="Kentucky KY">Kentucky</option>
+                                    <option value="Louisiana LA">Louisiana</option>
+                                    <option value="Maine ME">Maine</option>
+                                    <option value="Marshall Islands MH">Marshall Islands</option>
+                                    <option value="Maryland MD">Maryland</option>
+                                    <option value="Massachusetts MA">Massachusetts</option>
+                                    <option value="Michigan MI">Michigan</option>
+                                    <option value="Minnesota MN">Minnesota</option>
+                                    <option value="Mississippi MS">Mississippi</option>
+                                    <option value="Missouri MO">Missouri</option>
+                                    <option value="Montana MT">Montana</option>
+                                    <option value="Nebraska NE">Nebraska</option>
+                                    <option value="Nevada NV">Nevada</option>
+                                    <option value="New Hampshire NH">New Hampshire</option>
+                                    <option value="New Jersey NJ">New Jersey</option>
+                                    <option value="New Mexico NM">New Mexico</option>
+                                    <option value="New York NY">New York</option>
+                                    <option value="North Carolina NC">North Carolina</option>
+                                    <option value="North Dakota ND">North Dakota</option>
+                                    <option value="Northern Mariana Islands MP">Northern Mariana Islands</option>
+                                    <option value="Ohio OH">Ohio</option>
+                                    <option value="Oklahoma OK">Oklahoma</option>
+                                    <option value="Oregon OR">Oregon</option>
+                                    <option value="Palau PW">Palau</option>
+                                    <option value="Pennsylvania PA">Pennsylvania</option>
+                                    <option value="Puerto Rico PR">Puerto Rico</option>
+                                    <option value="Rhode Island RI">Rhode Island</option>
+                                    <option value="South Carolina SC">South Carolina</option>
+                                    <option value="South Dakota SD">South Dakota</option>
+                                    <option value="Tennessee TN">Tennessee</option>
+                                    <option value="Texas TX">Texas</option>
+                                    <option value="Utah UT">Utah</option>
+                                    <option value="Vermont VT">Vermont</option>
+                                    <option value="Virgin Islands VI">Virgin Islands</option>
+                                    <option value="Virginia VA">Virginia</option>
+                                    <option value="Washington WA">Washington</option>
+                                    <option value="West Virginia WV">West Virginia</option>
+                                    <option value="Wisconsin WI">Wisconsin</option>
+                                    <option value="Wyoming WY">Wyoming</option>
+                                </select>
+        
+                                <lable for="zip-code">Zipcode</label>
+                                <input type="text" id="zip-code" name="zip-code" minLengh="0" maxlength="5">
+                            </fieldset>
+                        </section>
+                            
+                        <section id="contact-methods-section" name="contact-methods-section">
+                            <fieldset><legend>Phone and Email</legend>
+                                <label for="email">Email</label>
+                                <input type="text" id="email" name="email">
+                                    
+                                <fieldset><legend>Phone/Texting Options</legend>
+                                    <label for="phone-type">Phone Type></label> 
+                                    <select name="phone-type" id="phone-type">
+                                        <option value="cell phone">mobile</option>
+                                        <option value="landline">landline</option>
+                                    </select>
+        
+                                    <label for="phone">Phone</label>
+                                    <input type="tel" id ="phone" name="phone">
+        
+                                    <label for="text-notification-checkbox">I want text message notifications</label>
+                                    <input type="checkbox" id="text-notification-checkbox" name="text-notification-checkbox" value="yes">
+        
+                                    <label for="voice-notifications-checkbox">I want voice notifications</label>
+                                    <input type="checkbox" id="voice-notifications-checkbox" name="voice-notifications-checkbox" value="yes">
+                                </fieldset>        
+                            </fieldset>
+                        </section>
+
+                        <input type="submit" id="submit-new-account" name="submit-new-account" value="submit">
+                    </form>
+            </section>
+
+            <section id="account-section>" name="account-section">
+                <h2>Your Account</h2>
+                
+                <section id="update-account-section" name="update-section-section">
+                    <h3>Update Your Account</h3>
+
+                    <section id="update-account-menu-section" name="update-account-menu-section">
+                        <h4 id="update-account-menu-section-heading" name="update-account-menu-section-heading">
+                            What Would You Like to Update Firstname?
+                        </h4>
+
+                        <menu id="update-account-menu" name="update-account-menu">
+                            <li id="change-address" name="change-address">
+                                <button type="submit" id="change-address-button" name="change-address-button" value="address-change" onclick="script.js">
+                                    Change Your Address
+                                </button>
+                            </li>
+                            <li id="change-email" name="change-email">
+                                <button type="submit" id="change-email-button" name="change-email-button" value="email-change" onclick="script.js">
+                                    Update Your Email
+                                </button>
+                            </li>
+                            <li id="change-phone" name="change-phone">
+                                <button type="submit" id="change-phone-button" name="change-phone-button" value="phone-change" onclick="script.js">
+                                    Update Your Phone Number
+                                </button>
+                            </li>
+                            <li id="change-order" name="change-order">
+                                <button type="submit" id="change-order-button" name="change-order-button" value="change-order" onclick="script.js">
+                                    Change an Order
+                                </button>
+                            </li>
+                            <li id="cancel-order" name="cancel-order">
+                                <button type="submit" id="cancel-order-button" name="cancel-order-button" value="delete-order" onclick="script.js">
+                                    Cancel and Order
+                                </button>
+                            </li>
+                            <li id="return-item" name="return-item">
+                                <button type="submit" id="return-item-button" name="return-item-button" value="return-item" onclick="script.js">
+                                    Return an Item
+                                </button>
+                            </li>
+                        </menu>
+                    </section>
+
+
+                    <section id="update-account-forms-section" name="update-account-forms-section" title="update account settings">
+                        <h4 id="update-account-forms-section-heading" name="update-account-forms-section-heading">
+                            Change Your Account Settings
+                        </h4>
+
+                        <section id="change-address-section" name="change-address-section">
+                            <h5 id="change-address-section-heading" name="change-address-section-heading">
+                                Update Your Mailing Address
+                            </h5>
+
+                            <label for="change-address-form">Change Your Mailing Address</label>
+                            <form id="change-address-form" name="change-address-form" title="change of address form" action="script.js" method="post">
+                                <table class="table" id="address-change-table" name="address-change-table">
+                                    <thead id="address-change-table-head" name="address-change-table-head">
+                                        <tr>
+                                            <th id="old-address-column" name="old-address-column">Old</th>
+                                            <th id="new-address-column" name="new-address-column">New</th>                                           
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <trow id="street-address-row" name="street-address-row">
+                                            <tdata id="old-street-address-cell" name="old-street-address-cell">
+                                                <label for="new-street-address">Old Adress</label>
+                                                <output id="old-street-address-data" name="old-street-address-data" form="change-address-form" for="street-address">                                         
+                                            </tdata>
+                                            <tdata id="new-street-address-cell" name="new-street-address-cell">
+                                                <label for="new-street-address-field">new Adress</label>
+                                                <input type="text" id="new-street-address-field" name="new-street-address-field">
+                                            </tdata>
+                                        </trow>
+                                        <trow id="city-row" name="city-row">
+                                            <tdata id="old-city-cell" name="old-city-cell">
+                                                <label for="new-city">Old City</label>
+                                                <output id="old-city-data" name="old-city-data" form="change-address-form" for="city">                                         
+                                            </tdata>
+                                            <tdata id="new-city-cell" name="new-city-cell">
+                                                <label for="new-city-field">New City</label>
+                                                <input type="text" id="new-city-field" name="new-city-field">
+                                            </tdata>                                            
+                                        </trow>
+                                        <trow id="state-row" name="state-row">
+                                            <tdata id="old-state-cell" name="old-state-cell">
+                                                <label for="new-state">Old State</label>
+                                                <output id="old-state-data" name="old-state-data" form="change-address-form" for="state">                                         
+                                            </tdata>
+                                            <tdata id="new-state-cell" name="new-state-cell">
+                                                <label for="new-state-field">New State</label>
+                                                <input type="text" id="new-state-field" name="new-state-field">
+                                            </tdata>
+                                        </trow>
+                                        <trow id="zipcode-row" name="zipcode-row">
+                                            <tdata id="old-zipcode-cell" name="old-zipcode-cell">
+                                                <label for="new-zipcode">Old Zipcode</label>
+                                                <output id="old-zipcode-data" name="old-zipcode-data" form="change-address-form" for="zipcode">                                         
+                                            </tdata>
+                                            <tdata id="new-zipcode-cell" name="new-zipcode-cell">
+                                                <label for="new-zipcode-field">New Zipcode</label>
+                                                <input type="text" id="new-zipcode-field" name="new-zipcode-field">
+                                            </tdata>                                            
+                                        </trow>
+                                    </tbody>
+                                </table>
+                                <input type="submit" id="submit-address-update" name="submit-address-update" value="submit">
+                            </form>
+                        </section>
+                    </section>
+
+                    <section id="change-email-section" name="change-email-section">
+                        <h5 id="change-email-section-heading" name="change-email-section-heading">
+                            Update Your Email Address
+                        </h5>
+                        <label for="change-email-form">Change Your Email Address</label>
+                        <form id="change-email-form" name="change-email-form" title="change of email form" action="script.js" method="post">
+                            <table class="table" id="email-change-table" name="email-change-table">
+                                <thead id="email-change-table-head" name="email-change-table-head">
+                                    <tr>
+                                        <th id="old-email-column" name="old-email-column">Old</th>
+                                        <th id="new-email-column" name="new-email-column">New</th>                                           
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <trow id="old-email-row" name="street-email-row">
+                                        <tdata id="old-email-cell" name="old-email-cell">
+                                            <label for="new-email">Old Email</label>
+                                            <output id="old-email-data" name="old-email-data" form="change-email-form" for="street-email">                                         
+                                        </tdata>
+                                        <tdata id="new-email-cell" name="new-email-cell">
+                                            <label for="new-email-field">new Email</label>
+                                            <input type="text" id="new-email-field" name="new-email-field">
+                                        </tdata>
+                                    </trow>
+                                </tbody>
+                            </table>
+                            <input type="submit" id="submit-email-update" name="submit-email-update" value="submit">
+                        </form>
+                    </section>
+
+                    <section id="change-phone-section" name="change-phone-section">
+                        <h5 id="change-phone-section-heading" name="change-phone-section-heading">
+                             Update Your phone 
+                        </h5>
+                        <label for="change-phone-form">Change Your phone</label>
+                        <form id="change-phone-form" name="change-phone-form" title="change of phone form" action="script.js" method="post">
+                            <table class="table" id="phone-change-table" name="phone-change-table">
+                                <thead id="phone-change-table-head" name="phone-change-table-head">
+                                    <tr>
+                                        <th id="old-phone-column" name="old-phone-column">Old</th>
+                                        <th id="new-phone-column" name="new-phone-column">New</th>                                           
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <trow id="old-phone-row" name="phone-row">
+                                        <tdata id="old-phone-cell" name="old-phone-cell">
+                                            <label for="new-phone">Old phone</label>
+                                            <output id="old-phone-data" name="old-phone-data" form="change-phone-form" for="phone">                                         
+                                        </tdata>
+                                        <tdata id="new-phone-cell" name="new-phone-cell">
+                                            <label for="new-phone-field">new phone</label>
+                                            <input type="text" id="new-phone-field" name="new-phone-field">
+                                        </tdata>
+                                    </trow>
+                                </tbody>
+                            </table>
+                            <input type="submit" id="submit-phone-update" name="submit-phone-update" value="submit">
+                        </form>
+                    </section>
+                </section>
+                </section>
+
+                <section id="account-settings-section" name="account-settings-section">
+                    <h3 id="account-settings-section-heading" name="account-settings-section-heading">
+                        Account Settings
+                    </h3> 
+
+                    <section id="account-information-output-section" name="account-information-output-section"><legend>Account Information</legend>
+                        <label for="first-name-output">Firstname</label> 
+                        <output id="first-name-output" name="first-name-output" for="firstname" form="account-registration-form">
+
+                         <label for="last-name-output">Lastname</label>
+                         <output id="last-name-output" name="last-name-output" for="lastname" form="account-registration-form">
+
+                        <label for="street-address-output">Adress</label>
+                        <output id="street-address-output" name="street-address-output" for="street-address" form="account-registration-form">
+          
+                        <label for="city-output">City</label>
+                        <output id="city-output" name="city-output" for="city" form="account-registration-form">
+
+                        <label for="birthdate-output">Birthdate</label>
+                        <output id="birthdate-output" name="birthdate-output" for="birthdate" form="account-registration-form">
+
+                        <label for="email">Email</label>
+                        <output id="email-output" name="email-output" for="email" form="account-registration-form">            
+
+                        <label for="phone-output">Phone</label>
+                        <output id ="phone-output" name="phone-output" for="phone" form="account-registration-form">
+                    </section>
+                </section>            
+                    
+                <section id="open-orders-section" name="open-orders-section">
+                    <h3 id="open-orders-section-heading" name="open-orders-section-heading">Your Open Orders</h3>
+                    <table id="open-orders-table" name="open-orders-table">
+                    </table>
+                </section>
+                    
+                <section id="previous-orders-section" name="previous-orders-section">
+                    <h3 id="previous-orders-section-heading" name="previous-orders-section-heading">Your Previous Orders</h3>
+                    <table id="previous-orders-table" name="previous-orders-table">      
+                    </table>
+                </section>
+            </section>
+        </main>
+        <!--######## End Main Section ########--> 
+        
+        <!--######## Start Footer Section ########-->   
+        <footer>
+
+        </footer>
+        <!--######## End Footer Section ########-->
+    </body>
+<!--######## Finish Body ########-->
+<html>
