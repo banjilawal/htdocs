@@ -1,0 +1,59 @@
+<?php
+    require_once('address.php');
+    require_once('phone.php');
+    require_once('creditcard.php');
+
+    class Customer {
+        private $firstname;
+        private $lastname;
+        private $phone;
+        private $email;
+        private $address;
+
+        private $id;
+        private $card;
+
+
+        
+        public function get_firstname () { return $this->firstname; }
+        public function get_lastname () { return $this->lastname; }
+        public function get_phone () { return $this->phone; }
+        public function get_email () { return $this->email; }
+        public function get_address () { return $this->adddress; }
+        
+        public function firstname ($name) { $this->firstname = $name; }
+        public function lastname ($name) { $this->lastname = $name; }
+        public function birthdate ($date) { $this->birthdate = $date; }
+        public function email ($email) { $this->email = $email; }
+
+      
+        
+
+        public function __toString() {
+           $string = 'firstname: ' . $this->firstname . '<br>' . PHP_EOL;
+           $string .= 'lastname: ' . $this->lastname . '<br>' . PHP_EOL;
+          # $string .= 'birthdate: ' . $this->birthdate . '<br>' . PHP_EOL;
+           $string .= 'phone: ' . $this->phone . '<br>' . PHP_EOL;
+           $string .= 'email: ' . $this->email . '<br>' . PHP_EOL;
+           $string .= 'address: ' . $this->address . '<br>' . PHP_EOL;
+           $string .= 'card: ' . $this->card . '<br>' . PHP_EOL;
+
+           return $string;     
+        }
+
+    } // end class Customer
+
+    $date = new ExpirationDate(11, 26);
+    $code = new SecurityCode(352);
+    $card = new CreditCard('5043-55422-2462-8632', $date, $code);
+    #echo $card;
+
+    $phone = new Phone('236', '155','1825');
+    $address = new PostalAddress('11681 Theatre Drive North', 'Champlin', 'MN', '55316');
+    
+    $customer = new Customer('Hannia', 'Free', $phone, 'hannia-free@aim.com', $address);
+    $customer->set_id('CN-38-VDL-M7');
+    $customer->set_card($card);
+
+ #   echo $customer;
+?>
