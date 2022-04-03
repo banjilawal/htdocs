@@ -1,0 +1,44 @@
+<?php
+    require_once('proteinBar.php');
+    require_once('customer.php');
+
+    class OrderItem {
+        private $id;
+        private $customer;
+        private $proteinBar;
+        private $quantity;
+        private $cost;
+
+        public function __construct() {
+            $this->id = null;
+            $this->customer = new Customer();
+            $this->item = new ProteinBar();
+            $this->quantity = 0;
+            $this->cost = 0.00;
+        }
+
+
+        public function get_id () { return $this->id; }
+        public function get_customer () { return $this->customer; }
+        public function get_item () { return $this->amount; }
+        public function get_tax () { return $this->tax; }
+        public function get_total () { return $this->total; }
+        public function get_status () { return $this->status; }
+
+        public function id ($id) { 
+            $this->id = $id; 
+            return $this; 
+        }
+ 
+
+        public function __toString() {
+            $text = $this->id . ' ' 
+                . $this->customerID 
+                . ' ' . $this->protenBar 
+                . ' ' . $this->quantity  
+                . ' ' . $this->cost;
+            return $text;
+        }
+
+    } // end class OrderItem
+?>

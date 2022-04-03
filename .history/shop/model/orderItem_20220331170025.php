@@ -1,0 +1,161 @@
+<?php
+    require_once('proteinBar.php');
+
+    class OrderItem {
+        private $id;
+        private $proteinBar;
+        private $quantity;
+        private $cost;
+
+        public function __construct() {
+            $this->id = null;
+            $this->proteinBar = new ProteinBar();
+            $this->quantity = 0;
+            $this->cost = 0.00;
+        }
+
+        public function bar ($bar) {
+            if (get_class($bar) != 'ProteinBar') {
+                throw new Exception("this is not a valid ProteinBar object");
+            }
+            $this->proteinBar = $bar;
+            return $this;
+        }
+
+        public function quantity ($number) {
+            if ($number <= 0) {
+                throw new Exception ("The quantity must be greater than zero");
+            }
+            $this->quantity = $number;
+            $this->cost = $this->quantity * $this->proteinBar->get_retailPrice();
+;           return $this;
+        }
+
+        public function get_id () { return $this->id; }
+        public function get_bar () { return $this->proteinBar; }
+        public function get_quantity () { return $this->quantity; }
+
+        public function get_cost () { 
+            return ($this->item->get_retailPrice() * $this->quantity); 
+        }
+
+        public function to_table () {
+
+            $elem = '<table class="product-table" id="' . $this->id . '" name="' . $this->id . '">'
+                . '<thead id="product-table-header" name="table-header">'
+                    . '<tr class="product-table-header-row">'
+                        . '<td><h2>' . $this->name . ' Price: ' . $this->retailPrice . '</h2></td>'
+                    . '<tr>'
+                    . '<tr class="product-table-header-row">'
+                        . '<th hidden>id</th>'
+                        . '<th>Proteinbar</th>'
+                        . '<th>Quantity</th>'
+                        . '<th>Cost</th>'
+                    . '</tr>'
+                . '</thead>'
+                . '<tbody>'
+                    . '<tr>'
+                        . '<td hidden>' . $this->id . '</td>'
+                        . '<td>' . $this->bar . '</td>'
+                        . '<td>' . $this->grams . '</td>'
+                        . '<td>' . $this->retailPrice . '</td>'                
+                    . '</tr>'
+                . '</tbody>'      
+            . '</table>';
+    
+            return $elem;
+        }
+
+        public function __toString() {
+            $text = $this->id . ' ' 
+                . ' ' . $this->proteinBar->__toString()
+                . ' ' . $this->quantity  
+                . ' ' . $this->cost;
+            return $text;
+        }
+
+    } // end class OrderItem
+
+    $orderItem = (new OrderItem())->bar($bar)->quantity(3);;
+    echo $orderItem;
+    echo '<p>' .$orderItem->to_table();
+
+    class OrderItems {
+        private $list = array();
+
+        public function get_list () { return $this->list; }
+
+        public function total_cost () {
+            $total = 0.00;
+            foreach ($this->list as $item) {
+                $total += $item->get_cost();
+            }
+            return $total;
+        }
+
+
+        public function add ($item) {
+            if (get_class($item) != get_class(new OrderItem())) {
+                throw new Exception("Not a valid class member for OrderItem collector");
+            }
+
+            if ($this->search_name($item->get->item->get->name()))
+            $this->list[] = $item;
+        }
+
+
+        public function search_name ($target) {
+            $result = null;
+
+            foreach ($this->list as $item) {
+                if ($item->get_name() == $target) {
+                    $result = $item;
+                    break;
+                }
+            }
+            return $result;
+        } // close search_model
+
+        public function search_id ($target) {
+            $result = null;
+
+            foreach ($this->list as $item) {
+                if ($item->get_id() == $target) {
+                    $result = $item;
+                    break;
+                }
+            }
+            return $result;
+        } // close search_id
+
+        public function __toString() {
+            $string = "";
+
+            foreach ($this->list as $bar) { $string  .= $bar . '<br>' . PHP_EOL; }
+            return $string;
+        } // close toString
+
+        public function to_table () {
+
+            $elem = '<table class>'
+                . '<thead>'
+                    . '<tr>'
+                        . '<th>Item</th>'
+                        . '<th>Quantity</th>'
+                        . '<th>Cost</th>'
+                    . '</tr>'
+                . '</thead>'
+                . '<tbody>'
+                    . '<tr>'
+                        . '<td>' . $this->to_table() . '</td>'
+                        . '<td>' . $this->quantity . '</td>'
+                        . '<td>' . $this->cost . '</td>'        
+                    . '</tr>'
+                . '</tbody>'      
+            . '</table>';
+    
+            return $elem;
+        }
+
+    } // end class ProteinBars
+?>
