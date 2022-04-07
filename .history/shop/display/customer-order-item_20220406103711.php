@@ -1,0 +1,49 @@
+<?php
+    session_start();
+    require_once ('../bootstrap.php');
+    require_once (MODEL_PATH . '/order.php');
+    require_once ('../db/order-queries.php');
+
+    print_r($_COOKIE);
+    $row = $_COOKIE['customerItemRow']; 
+
+    $customerOrderItemBag = serialize($_SESSION['customerOrderItemBag']);
+    $customerItem = $customerItemBag[$row];
+
+    #echo $orderItems->to_table();  
+
+    $title = 'Order ' . $customerItem->get_proteinBar()->get_name() . ' Details';
+?>
+
+
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <?php echo '<title>' . $title .  '</title>'; ?>
+</head>
+
+<body>   
+<header>
+    <?php echo '<h1>' . $title .  '</h1>'; ?>
+</header>
+
+<main>
+    <?php
+        echo $customerItem
+    ?>
+
+<script>
+        function send_order_item(row) {
+            data = row.childNodes[0];
+            cell = row.cells[0];
+            cookie = document.cookie = "orderItemID=" + cell.innerHTML + "; max-age=5";
+
+            location.href = "order-item.php";
+        }
+    </script>
+</main>
+
+</body>
+<html>

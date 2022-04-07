@@ -1,0 +1,71 @@
+<?php
+    require_once ('../bootstrap.php');
+    require_once (MODEL_PATH . '/customer.php');
+    require_once (MODEL_PATH . '/order.php');
+    require_once ('customer-queries.php');
+
+    $customer = null;
+
+    function order_query ($orderID) {
+        $mysqli = db_connect();
+        $order = new Order();
+
+        $query = 'SELECT id, submissionDate, estimatedDeliveryDate, actualDeliveryDate, '
+            . ' status, customerID FROM shop.orders WHERE id = ?';
+
+        $stmt = $mysqli->prepare($query);
+        $stmt->bind_param('s', $orderID);
+        $stmt->execute();
+
+        $stmt->bind_result($id, $submitDate, $estimatedDelivery, $actualDelivery, $status, $customerID);
+
+        while ($stmt->fetch()) {
+            $order->id($id);
+            $order->status($status);
+            $order->submission_date(new DateTime($submitDate));
+            $order->actual_delivery(new DateTime($actualDelivery));
+            $order->customer(customer_query($customerID));
+        }
+        $mysqli->close();
+        return $order;
+    }
+    $order = order_query('ULJNT-28040-DNWB-553');
+    echo $order->get_id();
+
+    function order_details_query ($order) {
+        $mysqli = db_connect();
+
+        $orderID = $order->get_id();
+        $customerID = $order->get_customer()->get_id();
+
+        $bag = new orderItemBag ();
+
+        $query = 'SELECT p.id productID, name, description, grams, retailPrice unitCost, quantity, '
+            . 'i.charge cost FROM shop.customers c INNER JOIN shop.orders o INNER JOIN shop.orderItems '
+            . ' i INNER JOIN shop.products p ON i.productID = p.id ON o.id = i.orderID ON c.id = o.customerID '
+            . ' WHERE c.id = ? AND o.id = ?';
+
+        $stmt = $mysqli->prepare($query);
+        $stmt->bind_param('ss', $customerID, $orderID);
+        $stmt->execute();
+
+        $stmt->bind_result($proteinBarID, $name, $description, $grams, $unitCost, $quantity, $cost);
+
+        while ($stmt->fetch()) {
+            $proteinBar = new ProteinBar();
+            $proteinBar->id($proteinBarID);
+            $proteinBar->name($name)->grams($grams);
+            $proteinBar->description($description)->retailPrice($unitCost); 
+    
+            $orderItem = new OrderItem();
+            $orderItem->proteinBar($proteinBar)->quantity($quantity);
+
+            $bag->add($orderItem);
+        }
+        $mysqli->close();
+        $order->items($bag);
+        return $bag;
+    }
+    $items = order_details_query($order);
+    echo '<p>' . $items-t . '</p>';
+?>
